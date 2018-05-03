@@ -1,0 +1,31 @@
+{
+  "name": "NewsBalance",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "adb": "^0.2.0",
+    "axios": "^0.18.0",
+    "firebase": "^4.13.1",
+    "newsapi": "^2.2.1",
+    "querystring": "^0.2.0",
+    "react": "^16.3.0-alpha.1",
+    "react-native": "0.54.2",
+    "react-native-card-stack-swiper": "https://github.com/Callen25/react-native-card-stack-swiper/tarball/master",
+    "react-native-elements": "^0.19.0",
+    "react-native-vector-icons": "^4.5.0",
+    "react-native-viewport-units": "^0.0.5"
+  },
+  "devDependencies": {
+    "babel-jest": "22.4.3",
+    "babel-preset-react-native": "4.0.0",
+    "jest": "22.4.3",
+    "react-test-renderer": "^16.3.0-alpha.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
