@@ -120,7 +120,7 @@ export default class App extends Component<Props> {
         }}
         onPanResponderRelease={(evt, gestureState) => {
           this.swiper.onRelease(gestureState);
-          if(this.balanceButton.state.showArticle)
+          if(this.balanceButton.state.showArticle && Math.abs(gestureState.dx) < this.swiper.props.horizontalThreshold)
             overlays[this.swiper.state.sindex - 2].resetOpacity();
           if(!newscards[this.swiper.state.sindex - 2].state.isScrollEnabled){
             newscards[this.swiper.state.sindex - 2].setState({isScrollEnabled: true});
