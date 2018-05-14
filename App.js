@@ -78,12 +78,19 @@ export default class App extends Component<Props> {
 
   getArticles() {
     const thisRef = this;
-    var rArticles;
-    db.collection("articles").orderBy("score", 'desc').get().then(function(querySnapshot) {
+    db.collection("articles").where("score", "<=", 1 ).where("score", ">", 0).orderBy("score", 'desc').get().then(function(querySnapshot) {
       var ratedArticles = querySnapshot.docs.map(doc => doc.data());
-      console.log(ratedArticles);
-      thisRef.setState({articles: ratedArticles});
+      thisRef.setState({articles: thisRef.state.articles.concat(ratedArticles)});
     });
+    db.collection("articles").where("score", "==", 2).get().then(function(querySnapshot) {
+      var ratedArticles = querySnapshot.docs.map(doc => doc.data());
+      thisRef.setState({articles: thisRef.state.articles.concat(ratedArticles)});
+    });
+    db.collection("articles").where("score", "<=", 0).orderBy("score", 'desc').get().then(function(querySnapshot) {
+      var ratedArticles = querySnapshot.docs.map(doc => doc.data());
+      thisRef.setState({articles: thisRef.state.articles.concat(ratedArticles)});
+    });
+
 
   }
 
