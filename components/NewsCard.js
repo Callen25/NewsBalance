@@ -81,6 +81,7 @@ export default class NewsCard extends Component<props> {
             <Text style={styles.description}>{this.props.description}</Text>
             </View>
             <View style={styles.bottomBanner}>
+            <View style={styles.readButton}>
             <Icon
             reverse
             raised
@@ -89,7 +90,10 @@ export default class NewsCard extends Component<props> {
               color='rgba(225, 53, 70, .9)'
             onPress = {this.props.onPress}
             />
-              <Text style={styles.description}>READ MORE</Text>
+            </View>
+            <View style={styles.more}>
+              <Text style={styles.readMore}>READ MORE</Text>
+            </View>
             </View>
 
             </View>
@@ -108,7 +112,8 @@ export default class NewsCard extends Component<props> {
 }
 const styles = StyleSheet.create({
   cardText:{
-    maxHeight: '70%'
+    maxHeight: '70%',
+    marginBottom: 93
   },
   articleImage: {
     flex: 1,
@@ -158,13 +163,29 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 10,
   },
+  readMore: {
+    fontSize: 20,
+    color: '#fff',
+  },
+  more: {
+    position: 'absolute',
+    bottom: 10,
+    alignSelf: 'center'
+  },
+  readButton: {
+    position: 'absolute',
+    bottom: 47,
+    alignSelf: 'center'
+  },
   bottomBanner: {
     backgroundColor: "rgba(0,0,0, .7)",
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
     width: null,
     height: 80,
     marginTop: 20,
-    alignItems: 'center',
-    justifyContent: 'flex-end'
   },
   webview: {
     overflow: 'hidden'
