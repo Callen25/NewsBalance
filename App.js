@@ -196,6 +196,7 @@ export default class App extends Component<Props> {
           url={item.url}
           urlToImage={item.urlToImage}
           title={item.title}
+          source={item.source.name}
           description={item.description}
           summaryHeight={summaryHeight}
           articleHeight={articleHeight}

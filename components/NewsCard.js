@@ -77,7 +77,8 @@ openInBrowser = () => {
     activeOpacity={0.8}
     onPress = {this.openInBrowser}
     style={[styles.browserLink, {width: this.props.width * .95}]}>
-      <Text style={styles.openText}>OPEN IN BROWSER</Text>
+      <Text style={styles.openText}>Click To Read On {this.props.source}
+      </Text>
     </TouchableOpacity>
     <View style={[styles.backgroundContainer, {height: this.state.summaryHeight - 20}]}>
         <ImageBackground
@@ -208,7 +209,7 @@ const styles = StyleSheet.create({
     marginLeft: 0,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
-    backgroundColor: '#ED7D3A'
+    backgroundColor: 'rgba(225, 53, 70, .9)',
   },
   openText: {
     color: '#fff',
