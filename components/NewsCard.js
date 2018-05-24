@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {View, ImageBackground, Text,
-   WebView, StyleSheet, LayoutAnimation} from 'react-native';
-import {Icon} from 'react-native-elements';
+   WebView, StyleSheet, LayoutAnimation, TouchableOpacity, Linking} from 'react-native';
+import {Icon, Button} from 'react-native-elements';
 
 export default class NewsCard extends Component<props> {
   constructor(props){
@@ -62,12 +62,24 @@ export default class NewsCard extends Component<props> {
       showArticle: true
   });
 }
+openInBrowser = () => {
+  Linking.canOpenURL(this.props.url).then(supported => {
+    if (supported)
+      Linking.openURL(this.props.url);
+  });
+};
   render(){
     summaryHeight = this.props.summaryHeight;
     articleHeight = this.props.articleHeight;
     return(
     <View>
-    <View style={[styles.backgroundContainer, {height: this.state.summaryHeight}]}>
+    <TouchableOpacity
+    activeOpacity={0.8}
+    onPress = {this.openInBrowser}
+    style={[styles.browserLink, {width: this.props.width * .95}]}>
+      <Text style={styles.openText}>OPEN IN BROWSER</Text>
+    </TouchableOpacity>
+    <View style={[styles.backgroundContainer, {height: this.state.summaryHeight - 20}]}>
         <ImageBackground
         source={{uri:this.props.urlToImage}}
         defaultSource={require('../Assets/NewsBackground.jpg')}
@@ -99,7 +111,7 @@ export default class NewsCard extends Component<props> {
             </View>
         </ImageBackground>
       </View>
-    <View style={[styles.backgroundContainer1, {height: this.state.articleHeight}]} >
+    <View style={[styles.backgroundContainer1, {height: this.state.articleHeight - 20}]} >
     <View style={[styles.overlay, {height: this.state.articleHeight, width: this.props.width * .95}]}/>
       <WebView
       scrollEnabled={this.state.isScrollEnabled}
@@ -123,12 +135,13 @@ const styles = StyleSheet.create({
   backgroundContainer: {
 
     overflow: 'hidden',
-    borderRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10
   },
   backgroundContainer1: {
     overflow: 'hidden',
-    borderRadius: 10,
-
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10
   },
   overlay: {
     overflow: 'hidden',
@@ -188,6 +201,18 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   webview: {
-    overflow: 'hidden'
+    overflow: 'hidden',
+  },
+  browserLink: {
+    height: 20,
+    marginLeft: 0,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    backgroundColor: '#ED7D3A'
+  },
+  openText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    alignSelf: 'center'
   }
 });
