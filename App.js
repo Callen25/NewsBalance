@@ -34,7 +34,7 @@ UIManager.setLayoutAnimationEnabledExperimental &&
 
 
   firebase.initializeApp({
-    apiKey: "AIzaSyDf3zss9lTnOZLlfkPrTSHzL7oHTZplR94",
+    apiKey: "####################",
     authDomain: "newsbalance-4543f.firebaseapp.com",
     databaseURL: "https://newsbalance-4543f.firebaseio.com",
     projectId: "newsbalance-4543f",
